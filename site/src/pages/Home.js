@@ -1,6 +1,7 @@
 import React from "react";
+import NavBar from "../components/NavBar";
 
-function AccountBlocked() {
+function Home() {
     return (
         <div>
             <p>Account Blocked</p>
@@ -8,4 +9,4 @@ function AccountBlocked() {
     );
 }
 
-export default AccountBlocked;
+export default Home;
