@@ -16,24 +16,29 @@ public class User {
     private Long id;
     @Column(name = "username")
     private String username;
-    private String status;
     private String password;
     private String email;
+
+    private String causes;
 
     public User() {}
 
     public User (String un, String pass) {
         this.username=un;
         this.password=pass;
-        this.status="test";
         this.email="test";
     }
 
     public User (String un, String pass, String status, String e) {
         this.username=un;
         this.password=pass;
-        this.status = status;
         this.email=e;
+    }
+
+    public User(String username, String password, String email) {
+        this.username=username;
+        this.password=password;
+        this.email=email;
     }
 
     public Long getId() {
@@ -68,17 +73,17 @@ public class User {
         return "User{" +
                 "id=" + id +
                 "username=" + username +
-                "status=" + status +
                 ", password=" + password +
                 ", email=" + email +
+                ", causes=" + causes +
                 "}";
     }
 
-    public String getStatus() {
-        return status;
+    public String getCauses() {
+        return causes;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setCauses(String causes) {
+        this.causes = causes;
     }
 }
