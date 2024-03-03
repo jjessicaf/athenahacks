@@ -4,15 +4,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.*;
 import org.springframework.stereotype.Service;
+import webappdev.login.User;
+import webappdev.login.UserRepository;
 
 @Service
 public class PreferencesService {
 
     private final PreferencesRepository preferencesRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    public PreferencesService(PreferencesRepository preferencesRepository) {
+    public PreferencesService(PreferencesRepository preferencesRepository, UserRepository userRepository) {
         this.preferencesRepository = preferencesRepository;
+        this.userRepository = userRepository;
     }
 
     public List<Preferences> getPreferences() {
@@ -31,10 +35,15 @@ public class PreferencesService {
 
     public List<Preferences> saveMultiple(List<String> causes, Long userId) {
         List<Preferences> preferences = new ArrayList<Preferences>();
+        User user = userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("User not found"));
+
         for (String c : causes) {
-            Preferences p = new Preferences(c, userId);
+            Preferences p = new Preferences();
+            p.setCause(c);
+            p.setUser(user);
+            p.setSize(0);
             save(p);
-            preferencesRepository.findById(p.getId()).ifPresent(preferences::add); // add if added
+            //preferencesRepository.findById(p.getId()).ifPresent(preferences::add); // add if added
         }
         return preferences;
     }

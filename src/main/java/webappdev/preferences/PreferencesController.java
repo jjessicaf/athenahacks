@@ -30,7 +30,10 @@ public class PreferencesController {
     @PostMapping("/preferences/update")
     @ResponseBody
     public ResponseEntity<?> updateUserPreferences(@RequestBody PreferencesRequest request) {
+        System.out.println(request.getUserId());
         List<Preferences> causes = preferencesService.saveMultiple(request.getCauses(), request.getUserId());
+
+        System.out.println("success");
 
         PreferencesResponse response = new PreferencesResponse(causes);
         return ResponseEntity.ok().body(response);
