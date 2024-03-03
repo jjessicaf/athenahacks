@@ -22,6 +22,7 @@ public class Preferences
 
     public Preferences(String causes, Long user_id) {
         this.cause = causes;
+        this.size = 0;
         setUid(user_id);
     }
 
@@ -61,12 +62,16 @@ public class Preferences
         this.cause = causes;
     }
 
+    public User getUser() { return this.user; }
+
+    public void setUser(User u) { this.user = u; }
+
     @Override
     public String toString() {
         return "Preferences{" +
                 "id=" + id +
-                ", causes='" + getCause() + '\'' +
-                ", uid='" + getUid() + '\'' +
+                ", cause='" + getCause() +
+                ", uid='" + getUid() +
                 '}';
     }
 }

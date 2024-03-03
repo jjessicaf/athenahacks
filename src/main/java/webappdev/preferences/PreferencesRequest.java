@@ -14,7 +14,7 @@ public class PreferencesRequest {
         this.causes = new ArrayList<String>();
     }
 
-    public PreferencesRequest(List<String> causes, Long userId) {
+    public PreferencesRequest(ArrayList<String> causes, Long userId) {
         this.userId = userId;
         this.causes = causes;
     }

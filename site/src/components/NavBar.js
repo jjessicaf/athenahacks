@@ -5,7 +5,7 @@ function NavBar() {
     return (
         <nav className="navbar">
             <div className="navbar_logo">
-                <img src="/assets/logo.png" alt="DOnate Logo" onClick={() => { window.location.href = "/"; }}/>
+                <img src="/assets/logo.png" alt="DOnate Logo" style={{ cursor: "pointer" }} onClick={() => { window.location.href = "/"; }}/>
             </div>
             <div className="navbar_buttons">
                 <button className="login-button" onClick={() => { window.location.href = "/login"; }}>log in</button>

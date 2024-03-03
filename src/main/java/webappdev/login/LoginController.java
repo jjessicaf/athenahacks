@@ -52,16 +52,19 @@ public class LoginController {
     //@CrossOrigin(origins = "http://localhost:8080")
     @PostMapping("/login")
     @ResponseBody
-    public ResponseEntity<Boolean> login(@RequestBody LoginRequest request) {
+    public ResponseEntity<?> login(@RequestBody LoginRequest request) {
         try {
             String username = request.getUsername();
             String password = request.getPassword();
 
             // Fetch user from database based on username
             User user2 = loginService.findUserByUsername(username);
+            LoginResponse response = new LoginResponse();
             if (user2 != null && user2.getPassword().equals(password)) {
                 // Username and password match
-                return ResponseEntity.ok(true);
+                response.setId(user2.getId());
+                response.setData("Success");
+                return ResponseEntity.ok().body(response);
             } else {
                 // Username and password don't match or user not found
                 return ResponseEntity.ok(false);
@@ -88,6 +91,7 @@ public class LoginController {
         LoginResponse response = new LoginResponse();
         if (userAdded) {
             response.setData("User registered successfully");
+            response.setId(newUser.getId());
             return ResponseEntity.ok().body(response);
         } else {
             response.setData("Username already taken");
