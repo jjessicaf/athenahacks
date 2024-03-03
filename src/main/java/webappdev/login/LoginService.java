@@ -9,6 +9,7 @@ import jakarta.transaction.Transactional;
 @Service
 public class LoginService {
     private final UserRepository userRepository;
+
     @Autowired
     public LoginService (UserRepository userRepository) {
         this.userRepository = userRepository;
