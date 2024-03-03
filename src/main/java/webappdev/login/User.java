@@ -16,10 +16,9 @@ public class User {
     private Long id;
     @Column(name = "username")
     private String username;
+    private String status;
     private String password;
     private String email;
-
-    private String causes;
 
     public User() {}
 
@@ -27,18 +26,21 @@ public class User {
         this.username=un;
         this.password=pass;
         this.email="test";
+        this.status="";
     }
 
     public User (String un, String pass, String status, String e) {
         this.username=un;
         this.password=pass;
         this.email=e;
+        this.status="";
     }
 
     public User(String username, String password, String email) {
         this.username=username;
         this.password=password;
         this.email=email;
+        this.status="";
     }
 
     public Long getId() {
@@ -75,15 +77,7 @@ public class User {
                 "username=" + username +
                 ", password=" + password +
                 ", email=" + email +
-                ", causes=" + causes +
                 "}";
     }
 
-    public String getCauses() {
-        return causes;
-    }
-
-    public void setCauses(String causes) {
-        this.causes = causes;
-    }
 }

@@ -61,6 +61,7 @@ public class LoginController {
             User user2 = loginService.findUserByUsername(username);
             if (user2 != null && user2.getPassword().equals(password)) {
                 // Username and password match
+                System.out.println("Success!!!!!");
                 return ResponseEntity.ok(true);
             } else {
                 // Username and password don't match or user not found
@@ -88,6 +89,7 @@ public class LoginController {
         LoginResponse response = new LoginResponse();
         if (userAdded) {
             response.setData("User registered successfully");
+            response.setId(newUser.getId());
             return ResponseEntity.ok().body(response);
         } else {
             response.setData("Username already taken");
