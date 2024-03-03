@@ -40,8 +40,9 @@ function Login() {
                     />
                 </div>
             </div>
-            <button class="log-button" onClick={() => {
-                fetch("/login", {
+
+            <button class ="log-button" onClick={() => {
+                fetch('http://localhost:8080/project/api/register', {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -52,7 +53,10 @@ function Login() {
                         fails: fails
                     })
                 })
-                    .then((response) => response.json())
+                    .then((response) => {
+                        console.log('Response Headers:', response.headers);
+                        return response.json();
+                    })
                     .then((response) => {
                         if (response?.fails === 3) {
                             window.location.href = "/AccountBlockedPage";
