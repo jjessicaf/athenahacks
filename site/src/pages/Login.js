@@ -26,8 +26,9 @@ function Login() {
                 return response.json();
             })
             .then((response) => {
-                if (response===true) {
+                if (response?.data) {
                     localStorage.setItem("uid", response.id);
+                    console.log(response.id);
                     window.location.href ="/";
                 }
             });
