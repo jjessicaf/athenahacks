@@ -23,7 +23,7 @@ function Rec() {
 
     const user = Number(localStorage.getItem("uid"));
     const fetchPreferences = () => {
-        fetch("http://localhost:8080/project/api/get-preferences", {
+        fetch("http://localhost:8080/project/api/preferences/post", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -37,8 +37,9 @@ function Rec() {
                 return response.json();
             })
             .then(data => {
+                console.log(data);
                 // Extract preferences from the response
-                const preferencesList = data.causes.map(preference => preference.name);
+                const preferencesList = data.data;
 
                 // Call API for each preference
                 preferencesList.forEach(preference => {
@@ -51,7 +52,7 @@ function Rec() {
     };
 
     const getOrganizations = (preference) => {
-        fetch("https://partners.every.org/v0.2/browse"+preference+"?apiKey=pk_live_9033944ae6aeeb2c9bc83bd2029060d9")
+        fetch("https://partners.every.org/v0.2/browse/"+preference+"?apiKey=pk_live_9033944ae6aeeb2c9bc83bd2029060d9")
         //     , {
         //     method: "POST",
         //     headers: {
