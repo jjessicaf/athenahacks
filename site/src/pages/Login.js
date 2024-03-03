@@ -1,4 +1,7 @@
 import React, {useEffect, useState} from "react";
+import '../styles/login.css';
+import NavBar from "../components/NavBar";
+
 
 function Login() {
 
@@ -12,27 +15,32 @@ function Login() {
     }, []);
 
     return (
-        <div>
-            <div>Login Page</div>
-            <div>
-                <label>username </label>
-                <input
-                    id="username"
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
+        <body>
+        <NavBar id="navbar"></NavBar>
+
+        <div class="container">
+            <div class="title">Welcome Back!</div>
+            <div class="login-container">
+                <div class="input-container">
+                    <label>username </label>
+                    <input
+                        id="username"
+                        type="text"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                </div>
+                <div class="input-container">
+                    <label>password </label>
+                    <input
+                        id="password"
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </div>
             </div>
-            <div>
-                <label>password </label>
-                <input
-                    id="password"
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-            </div>
-            <button onClick={() => {
+            <button class="log-button" onClick={() => {
                 fetch("/login", {
                     method: "POST",
                     headers: {
@@ -55,10 +63,11 @@ function Login() {
                         }
                     });
             }}>
-                Login
+                log in
             </button>
             {fetchResponse ? <p>{fetchResponse}</p> : null}
         </div>
+        </body>
     )
 }
 
