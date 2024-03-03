@@ -1,6 +1,4 @@
-# athenahacks
-
-# DOnate
+# DOnate | athenahacks
 
 ## Inspiration
 Impactful giving should be easy and should be a streamlined process for those who are interested in making a difference. But arguably the most difficult part of this process is taking the first step and finding out just _which_ organization/fund aligns with the donor's ideals and how cost-effective and impactful this organization/fund is; donors should know that their dollars are truly making a difference in the field they are committed to.
