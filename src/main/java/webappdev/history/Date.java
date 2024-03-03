@@ -11,6 +11,9 @@ public class Date {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "name")
+    private String name;
+
     @Column(name = "date")
     private java.sql.Date date;
 
@@ -26,7 +29,12 @@ public class Date {
     public Date() {
     }
 
-    public Date(java.sql.Date date, int amount, Long userId) {
+    public Date(Long userId) {
+        setUid(userId);
+    }
+
+    public Date(String name, java.sql.Date date, int amount, Long userId) {
+        this.name = name;
         this.date = date;
         this.amount = amount;
         setUid(userId);
@@ -74,9 +82,18 @@ public class Date {
     public String toString() {
         return "History{" +
                 "id=" + id +
+                ", name=" + name +
                 ", date=" + date +
                 ", amount=" + amount +
                 ", uid=" + user.getId() +
                 '}';
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
