@@ -32,7 +32,10 @@ function Preferences() {
             .then(response => response.json())
             .then(data => {
                 console.log("Preferences updated:", data);
+                window.location.href ="/dashboard";
+
                 // Handle response as needed
+                window.location.href ="/recommendation";
             })
             .catch(error => {
                 console.error("Error updating preferences:", error);

@@ -16,9 +16,12 @@ public class Organizations {
     @Column(name = "url")
     private String url;
 
-    @Lob
-    @Column(name = "image", columnDefinition = "LONGBLOB")
-    private byte[] image;
+    //@Lob
+    @Column(name = "image")//, columnDefinition = "LONGBLOB")
+    private String image;
+
+    @Column(name = "slug")
+    private String slug;
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
@@ -29,10 +32,11 @@ public class Organizations {
     public Organizations() {
     }
 
-    public Organizations(String name, String url, byte[] image, Long userId) {
+    public Organizations(String name, String url, String image, String slug, Long userId) {
         this.name = name;
         this.url = url;
         this.image = image;
+        this.slug = slug;
         setUid(userId);
     }
 
@@ -62,13 +66,13 @@ public class Organizations {
         this.url = url;
     }
 
-    public byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
-    }
+//    public byte[] getImage() {
+//        return image;
+//    }
+//
+//    public void setImage(byte[] image) {
+//        this.image = image;
+//    }
 
     public Long getUid() {
         return (user != null) ? user.getId() : -1;
@@ -85,9 +89,27 @@ public class Organizations {
     public String toString() {
         return "Organization{" +
                 "id=" + id +
-                ", name='" + name +
-                ", url='" + url +
-                ", uid='" + getUid() +
+                ", name=" + name +
+                ", url=" + url +
+                ", image=" + image +
+                ", slug=" + slug +
+                ", uid=" + getUid() +
                 '}';
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
     }
 }
