@@ -6,6 +6,7 @@ import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
 import Rec from "./pages/Rec"
 import Preferences from "./pages/Preferences/Preferences";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                 <Route path="/" element={<Home />}/>
                 <Route path="/login" element={<Login />}/>
                 <Route path="/signup" element={<SignUp />}/>
+                <Route path="/dashboard" element={<Dashboard />}/>
                 <Route path="/preferences" element={<Preferences />}/>
                 <Route path="/recommendation" element={<Rec />}/>
                 <Route path="*" element={<Navigate to="/" replace />}/>
