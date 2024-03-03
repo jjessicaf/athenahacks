@@ -1,5 +1,6 @@
 package webappdev;
 
+import org.aspectj.weaver.ast.Or;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -7,6 +8,8 @@ import webappdev.history.Date;
 import webappdev.history.DateRepository;
 import webappdev.login.User;
 import webappdev.login.UserRepository;
+import webappdev.organizations.Organizations;
+import webappdev.organizations.OrganizationsRepository;
 import webappdev.preferences.Preferences;
 import webappdev.preferences.PreferencesRepository;
 
@@ -19,7 +22,7 @@ import java.util.List;
 public class SpringBootConfig {
 
     @Bean
-    CommandLineRunner commandLineRunner(UserRepository userRepository, PreferencesRepository preferencesRepository, DateRepository dateRepository) {
+    CommandLineRunner commandLineRunner(UserRepository userRepository, PreferencesRepository preferencesRepository, OrganizationsRepository organizationsRepository, DateRepository dateRepository) {
         return args -> {
 
             // USERS
@@ -56,6 +59,14 @@ public class SpringBootConfig {
 
             preferencesRepository.saveAll(
                     List.of(p1, p2, p3, p4)
+            );
+
+            Organizations org1 = new Organizations("Lil Bub's Big Fund", "https://www.goodjobbub.org/", "image1.jpg", "lilbubsbigfund", 1L);
+            Organizations org2 = new Organizations("Malala Fund", "http://example.com/org2", "image2.jpg", "org2-slug", 1L);
+            Organizations org3 = new Organizations("Innocence Project", "http://example.com/org3", "image3.jpg", "org3-slug", 1L);
+
+            organizationsRepository.saveAll(
+                    List.of(org1, org2, org3)
             );
 
             Date d1 = new Date(
