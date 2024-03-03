@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Preferences from "./pages/Preferences/Preferences";
 import Rec from "./pages/Rec";
 import Dashboard from "./pages/Dashboard";
+import Organization from "./components/Organization"
 
 function App() {
     return (
@@ -19,7 +20,13 @@ function App() {
                 <Route path="/dashboard" element={<Dashboard />}/>
                 <Route path="/preferences" element={<Preferences />}/>
                 <Route path="/recommendation" element={<Rec />}/>
-                <Route path="*" element={<Navigate to="/" replace />}/>
+                <Route path="/org" element={<Organization
+                    name="Save the SNails"
+                    websiteUrl="google.com"
+                    coverImageUrl="https://res.cloudinary.com/everydotorg/image/upload/f_auto,c_limit,w_3840,q_80/profile_pics/ipxxsfqxtt6skku7vh1z"
+                    slug="lilbubsbigfund"
+                />}/>
+                {/*<Route path="*" element={<Navigate to="/" replace />}/>*/}
             </Routes>
         </div>
     )
