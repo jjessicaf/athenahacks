@@ -64,6 +64,7 @@ public class LoginController {
                 // Username and password match
                 response.setId(user2.getId());
                 response.setData("Success");
+                response.setUsername(user2.getUsername());
                 return ResponseEntity.ok().body(response);
             } else {
                 // Username and password don't match or user not found
@@ -92,6 +93,7 @@ public class LoginController {
         if (userAdded) {
             response.setData("User registered successfully");
             response.setId(newUser.getId());
+            response.setUsername(newUser.getUsername());
             return ResponseEntity.ok().body(response);
         } else {
             response.setData("Username already taken");

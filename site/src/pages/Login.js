@@ -28,6 +28,7 @@ function Login() {
             .then((response) => {
                 if (response?.data) {
                     localStorage.setItem("uid", response.id);
+                    localStorage.setItem("username", response.username);
                     console.log(response.id);
                     window.location.href ="/dashboard";
                 }

@@ -3,6 +3,7 @@ import "../styles/dashboard.css"
 
 function Dashboard() {
     const uid = parseInt(localStorage.getItem("uid"), 10);
+    const username = localStorage.getItem("username");
     const [causes, setCauses] = useState([]);
 
 
@@ -32,7 +33,7 @@ function Dashboard() {
         <body>
             <div className="main-main-container">
 
-                <div className="title">Welcome back, friend!</div>
+                <div className="title">Welcome back, {username}!</div>
 
                 <div className="main-container">
                     <div id="graph">
