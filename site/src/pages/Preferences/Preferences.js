@@ -35,6 +35,7 @@ function Preferences() {
                 window.location.href ="/dashboard";
 
                 // Handle response as needed
+                window.location.href ="/recommendation";
             })
             .catch(error => {
                 console.error("Error updating preferences:", error);
