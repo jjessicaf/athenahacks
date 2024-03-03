@@ -29,7 +29,7 @@ function Login() {
                 if (response?.data) {
                     localStorage.setItem("uid", response.id);
                     console.log(response.id);
-                    window.location.href ="/";
+                    window.location.href ="/dashboard";
                 }
             });
     }
