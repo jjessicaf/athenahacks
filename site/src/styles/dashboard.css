@@ -5,10 +5,11 @@
 }
 
 .title{
+    margin-left:14px;
     font-family:'Montserrat';
     color:white;
     font-size:30px;
-    margin-bottom:-20px;
+    margin-bottom:-50px;
     font-weight:600;
 }
 
@@ -20,11 +21,12 @@
     flex-direction: column;
     justify-content: center;
     font-family: 'Montserrat', sans-serif;
+    justify-self: center;
     align-content:flex-start;
     row-gap:0px;
 }
 .textbox{
-    width: 50%;
+    width: 55%;
     display:flex;
     flex-direction: column;
     height: 35%;
@@ -32,6 +34,8 @@
     padding-bottom:20px;
     justify-content: space-between;
     font-weight:600;
+    padding-left:10px;
+
 
 }
 .donation-streak-text{
@@ -50,6 +54,8 @@
     flex-flow: wrap;
 }
 #graph{
+    margin-left:14px;
+
     height:45%;
     background-color:white;
     width:40%;
@@ -59,6 +65,8 @@
 .bottom-left-container{
     width:60vh;
     height:40vh;
+    margin-left:14px;
+
 }
 .causes-container{
     width:30vh;
@@ -127,7 +135,7 @@
 }
 
 .bottom-right-container{
-    width:50%;
+    width:80vh;
     height:40vh;
 }
 
