@@ -25,6 +25,7 @@ CREATE TABLE organizations (
        name VARCHAR(50) NOT NULL,
        url VARCHAR(500) NOT NULL,
        image VARCHAR(500) NOT NULL,
+       slug VARCHAR(50) NOT NULL,
        user_id INT NOT NULL,
        FOREIGN KEY (user_id) REFERENCES users(id)
 );
@@ -34,3 +35,11 @@ INSERT INTO preferences(cause, size, user_id) VALUES ('animals', 0, 1);
 INSERT INTO preferences(cause, size, user_id) VALUES ('water', 0, 1);
 INSERT INTO preferences(cause, size, user_id) VALUES ('food', 0, 1);
 INSERT INTO preferences(cause, size, user_id) VALUES ('work', 0, 1);
+
+CREATE TABLE history (
+     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+     date DATE,
+     amount INT NOT NULL,
+     user_id INT NOT NULL,
+     FOREIGN KEY (user_id) REFERENCES users(id)
+);
