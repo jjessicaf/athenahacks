@@ -22,18 +22,9 @@ CREATE TABLE preferences (
 
 CREATE TABLE organizations (
        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-       title VARCHAR(50) NOT NULL,
-       description VARCHAR(500) NOT NULL,
-       rating DOUBLE NOT NULL,
-       image LONGBLOB NOT NULL,
+       name VARCHAR(50) NOT NULL,
+       url VARCHAR(500) NOT NULL,
+       image VARCHAR(500) NOT NULL,
        user_id INT NOT NULL,
        FOREIGN KEY (user_id) REFERENCES users(id)
-);
-
-CREATE TABLE saved_organizations (
-     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-     user_id INT NOT NULL,
-     organization_id INT NOT NULL,
-     FOREIGN KEY (user_id) REFERENCES users(id),
-     FOREIGN KEY (organization_id) REFERENCES organizations(id)
 );

@@ -13,17 +13,20 @@ const categories = [
 function Preferences() {
     const [formData, setFormData] = useState({ causes: [] });
     // formData = selectedCauses
-    const user = Number(localStorage.getItem("uid"));
+    const user = parseInt(localStorage.getItem("uid"), 10);
 
     const handleSubmitPreferences = () => {
-        fetch("/api/update-preferences", {
+        console.log(formData);
+        console.log(localStorage.getItem("uid"));
+        console.log(user);
+        fetch("http://localhost:8080/project/api/preferences/update", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                userId: user,
-                causes: formData
+                causes: formData.causes,
+                userId: user
             })
         })
             .then(response => response.json())

@@ -28,8 +28,8 @@ function SignUp() {
 
             const responseData = await response.json();
             if (responseData?.data) {
-                localStorage.setItem("uid", response.id);
-                window.location.href ="/";
+                localStorage.setItem("uid", responseData.id);
+                window.location.href ="/preferences";
             }
 
             // Handle the response data as needed

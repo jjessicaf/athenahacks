@@ -46,3 +46,25 @@ h2 {
     width: 15px;
     cursor: pointer;
 }
+
+.rec-container > button {
+    background-color: #F8D764; /* yellow */
+    border: none;
+    color: #4D6052 /*bg color*/;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 22px;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    transition-duration:.2s;
+    height: 40px;
+    width: 5em;
+    padding: 0;
+    margin-top: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background-color: whitesmoke;
+}

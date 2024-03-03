@@ -6,7 +6,7 @@ function Rec() {
     const [hearted, setHearted] = useState(false);
     // const [preferences, setPreferences] = useState([]);
     const [organizations, setOrganizations] = useState([]);
-
+  
     const toggleHeart = () => {
         if (!hearted) {
             setHeartSrc("/assets/Favorite.png");
