@@ -58,13 +58,10 @@ function Dashboard() {
                 <div className="title">Welcome back, {username}!</div>
 
                 <div className="main-container">
-                    <div id="graph">
+                    <div className="graph">
                         <iframe
                             title="Taipy"
                             src="http://127.0.0.1:5000/" // Replace this URL with the URL of your Python application
-                            frameBorder="0"
-                            allowfullscreen
-                            scrolling="no"
                             id="graph-taipy"
                         ></iframe>
                     </div>
