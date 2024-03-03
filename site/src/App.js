@@ -2,6 +2,7 @@ import React from "react";
 import {Navigate, Route, Routes} from "react-router-dom";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import Home from "./pages/Home";
 
 function App() {
     return (

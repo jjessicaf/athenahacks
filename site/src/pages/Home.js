@@ -4,7 +4,7 @@ import NavBar from "../components/NavBar";
 function Home() {
     return (
         <div>
-            <p>Account Blocked</p>
+            <NavBar></NavBar>
         </div>
     );
 }
