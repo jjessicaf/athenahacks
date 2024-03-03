@@ -7,24 +7,18 @@ function Login() {
     const [fetchResponse, handleFetchResponse] = useState();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [fails, setFails] = useState(0);
-
-    useEffect(() => {
-        setFails(0);
-    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch('http://localhost:8080/project/api/register', {
+        fetch('http://localhost:8080/project/api/login', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
                 username: username,
-                password: password,
-                fails: fails
+                password: password
             })
         })
             .then((response) => {
@@ -32,12 +26,9 @@ function Login() {
                 return response.json();
             })
             .then((response) => {
-                if (response?.fails === 3) {
-                    window.location.href = "/AccountBlockedPage";
-                }
-                else if (response?.data) {
-                    setFails(response.fails);
-                    handleFetchResponse(response.data);
+                if (response===true) {
+                    localStorage.setItem("uid", response.id);
+                    window.location.href ="/";
                 }
             });
     }
