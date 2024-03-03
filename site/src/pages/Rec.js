@@ -7,14 +7,14 @@ function Rec() {
     // const [preferences, setPreferences] = useState([]);
     const [organizations, setOrganizations] = useState([]);
   
-    const toggleHeart = () => {
-        if (!hearted) {
-            setHeartSrc("/assets/Favorite.png");
-        } else {
-            setHeartSrc("/assets/Heart.png");
-        }
-        setHearted(!hearted);
-    };
+    // const toggleHeart = () => {
+    //     if (!hearted) {
+    //         setHeartSrc("/assets/Favorite.png");
+    //     } else {
+    //         setHeartSrc("/assets/Heart.png");
+    //     }
+    //     setHearted(!hearted);
+    // };
 
     useEffect(() => {
         // Fetch user preferences and convert them into a list of strings
@@ -53,14 +53,6 @@ function Rec() {
 
     const getOrganizations = (preference) => {
         fetch("https://partners.every.org/v0.2/browse/"+preference+"?apiKey=pk_live_9033944ae6aeeb2c9bc83bd2029060d9")
-        //     , {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //         "Authorization": "Bearer pk_live_9033944ae6aeeb2c9bc83bd2029060d9"
-        //     },
-        //     body: JSON.stringify({ categories: preferences })
-        // })
             .then(response => {
                 if (!response.ok) {
                     throw new Error("Failed to fetch organizations");
@@ -94,6 +86,8 @@ function Rec() {
             <div className="header">
                 <h2>Great! Here are our recommendations:</h2>
                 <p>We have saved these organizations to your profile.</p>
+            </div>
+            <div className={"organization-results"}>
             </div>
             {/*<div className="rec-list">*/}
             {/*    <div className="example1">*/}
