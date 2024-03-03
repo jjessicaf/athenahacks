@@ -1,4 +1,4 @@
-package webappdev;
+package webappdev.login;
 
 public class LoginRequest
 {
