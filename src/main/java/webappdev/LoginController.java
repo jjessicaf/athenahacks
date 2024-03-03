@@ -8,7 +8,7 @@ public class LoginController {
 
     private int numFailed = 0;
 
-    @GetMapping("/login")
+    @GetMapping("/loginapi")
     public String login(@RequestParam(value="username", defaultValue = "") String username, @RequestParam(value="password", defaultValue = "") String password) {
         if (username.equals("Tommy") && password.equals("Trojan")) {
             return "Login Successful";
@@ -17,7 +17,7 @@ public class LoginController {
         return "Login Unsuccessful";
     }
 
-    @PostMapping("/login")
+    @PostMapping("/loginapi")
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request) {
         if (request.getFails() == 0) {
             numFailed = 0;

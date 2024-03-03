@@ -8,8 +8,8 @@ function NavBar() {
                 <img src="/assets/logo.png" alt="DOnate Logo" />
             </div>
             <div className="navbar_buttons">
-                <button className="login-button">log in</button>
-                <button className="signup-button">sign up</button>
+                <button className="login-button" onClick={() => { window.location.href = "/login"; }}>log in</button>
+                <button className="signup-button" onClick={() => { window.location.href = "/signup"; }}>sign up</button>
             </div>
         </nav>
     );
