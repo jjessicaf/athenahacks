@@ -109,7 +109,7 @@ function Rec() {
 
             {/*</div>*/}
             {/*<div className="see-more-div"><a className="see-more">see more</a></div>*/}
-            <button>done</button>
+            <button onClick={() => window.location.href = "/dashboard"}>done</button>
 
 
         </div>

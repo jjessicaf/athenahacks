@@ -28,3 +28,9 @@ CREATE TABLE organizations (
        user_id INT NOT NULL,
        FOREIGN KEY (user_id) REFERENCES users(id)
 );
+
+INSERT INTO users(username, status, password, email) VALUES ('tommy', '','Trojan','tommy@usc.edu');
+INSERT INTO preferences(cause, size, user_id) VALUES ('animals', 0, 1);
+INSERT INTO preferences(cause, size, user_id) VALUES ('water', 0, 1);
+INSERT INTO preferences(cause, size, user_id) VALUES ('food', 0, 1);
+INSERT INTO preferences(cause, size, user_id) VALUES ('work', 0, 1);

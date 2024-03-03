@@ -55,7 +55,7 @@ function Dashboard() {
                                 <div className="causes-label">
                                     Causes
                                 </div>
-                                <a className="link" href="">
+                                <a className="link" onClick={() => window.location.href = "/preferences"}>
                                     edit
                                 </a>
                             </div>
