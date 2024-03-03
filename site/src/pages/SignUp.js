@@ -46,7 +46,7 @@ function SignUp() {
     return (
         <div>
             <div className="signupContainer">
-                <div style={{ fontSize: '24px' }}>Welcome!</div>
+                <div style={{ fontSize: '30px' }}>Welcome!</div>
                 <form className="form-input" onSubmit={handleSubmit}>
                     <div>
                         <label>username </label>
@@ -106,7 +106,9 @@ function SignUp() {
                             required
                         />
                     </div>
-                    <button type="submit" className={"sign-button"}>sign up</button>
+                    <div className={"signbutton-container"}>
+                        <button type="submit" className={"sign-button"}>sign up</button>
+                    </div>
                 </form>
 
                 <div className={"errorMsg"}></div>

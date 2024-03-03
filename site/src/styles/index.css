@@ -9,3 +9,7 @@ body {
     background-color: #475B51;
     font-size: 12em;
 }
+
+button {
+    cursor: pointer;
+}
