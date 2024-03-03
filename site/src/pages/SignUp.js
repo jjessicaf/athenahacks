@@ -1,6 +1,6 @@
 import React from "react";
 
-function AccountBlocked() {
+function SignUp() {
     return (
         <div>
             <p>Account Blocked</p>
@@ -8,4 +8,4 @@ function AccountBlocked() {
     );
 }
 
-export default AccountBlocked;
+export default SignUp;
