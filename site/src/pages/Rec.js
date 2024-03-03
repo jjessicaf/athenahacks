@@ -67,7 +67,8 @@ function Rec() {
                     const organizationData = {
                         name: organization.name,
                         websiteUrl: organization.websiteUrl,
-                        coverImageUrl: organization.coverImageUrl
+                        coverImageUrl: organization.coverImageUrl,
+                        slug: organization.slug
                     };
                     // Handle the organization data
                     setOrganizations(prevOrganizations => [...prevOrganizations, organizationData]);
