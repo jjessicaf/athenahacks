@@ -6,6 +6,7 @@ import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
 import Rec from "./pages/Rec"
 import Preferences from "./pages/Preferences/Preferences";
+import Rec from "./pages/Rec";
 import Dashboard from "./pages/Dashboard";
 
 function App() {
