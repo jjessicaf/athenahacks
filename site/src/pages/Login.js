@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import '../styles/login.css';
-import NavBar from "../components/NavBar";
 
 
 function Login() {
@@ -16,12 +15,10 @@ function Login() {
 
     return (
         <body>
-        <NavBar id="navbar"></NavBar>
-
-        <div class="container">
-            <div class="title">Welcome Back!</div>
-            <div class="login-container">
-                <div class="input-container">
+        <div className="container">
+            <div className="title">Welcome Back!</div>
+            <div className="login-container">
+                <div className="input-container">
                     <label>username </label>
                     <input
                         id="username"
@@ -30,7 +27,7 @@ function Login() {
                         onChange={(e) => setUsername(e.target.value)}
                     />
                 </div>
-                <div class="input-container">
+                <div className="input-container">
                     <label>password </label>
                     <input
                         id="password"
@@ -41,7 +38,7 @@ function Login() {
                 </div>
             </div>
 
-            <button class ="log-button" onClick={() => {
+            <button className ="log-button" onClick={() => {
                 fetch('http://localhost:8080/project/api/register', {
                     method: "POST",
                     headers: {
