@@ -26,7 +26,7 @@ public class PreferencesService {
     }
 
     public List<Preferences> getPreferencesByUserId(Long uid) {
-        return preferencesRepository.findByUserId(uid);
+        return preferencesRepository.findPreferencesByUserId(uid);
     }
 
     public List<Preferences> saveMultiple(List<String> causes, Long userId) {

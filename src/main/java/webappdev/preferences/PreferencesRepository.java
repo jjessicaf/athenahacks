@@ -7,6 +7,6 @@ import java.util.Optional;
 
 @Repository
 public interface PreferencesRepository extends JpaRepository<Preferences, Long> {
-    List<Preferences> findByUserId(Long userId);
+    List<Preferences> findPreferencesByUserId(Long userId);
 }
 

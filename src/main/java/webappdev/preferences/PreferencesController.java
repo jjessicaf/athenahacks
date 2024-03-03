@@ -18,7 +18,7 @@ public class PreferencesController {
         this.preferencesService = preferencesService;
     }
 
-    @PostMapping("/get-preferences") //GET
+    @PostMapping("/preferences/post") //GET
     @ResponseBody
     public ResponseEntity<?> getUserPreferences(@RequestBody PreferencesRequest request) {
         List<Preferences> causes = preferencesService.getPreferencesByUserId(request.getUserId());
@@ -27,7 +27,7 @@ public class PreferencesController {
         return ResponseEntity.ok().body(response);
     }
 
-    @PostMapping("/update-preferences")
+    @PostMapping("/preferences/update")
     @ResponseBody
     public ResponseEntity<?> updateUserPreferences(@RequestBody PreferencesRequest request) {
         List<Preferences> causes = preferencesService.saveMultiple(request.getCauses(), request.getUserId());
