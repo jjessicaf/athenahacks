@@ -33,13 +33,22 @@ public class OrganizationsController {
 
     @PostMapping("/organization/save") //POST
     @ResponseBody
-    public ResponseEntity<String> saveOrganization(@RequestBody Organizations organization) {
+    public ResponseEntity<String> saveOrganization(@RequestBody OrganizationsRequest request) {
 
-        if (organizationsService.organizationExistsByName(organization.getName())) {
+        if (organizationsService.organizationExistsByName(request.getName())) {
             return ResponseEntity.badRequest().body("Organization already exists");
         }
 
-        boolean saved = organizationsService.saveOrganization(organization);
+        System.out.println(request.getUserId());
+
+        Organizations o = new Organizations();
+        o.setImage(request.getImage());
+        o.setName(request.getName());
+        o.setSlug(request.getSlug());
+        o.setUrl(request.getUrl());
+        o.setUid(request.getUserId());
+
+        boolean saved = organizationsService.saveOrganization(o, request.getUserId());
         if (saved) {
             return ResponseEntity.ok("Organization saved successfully");
         } else {

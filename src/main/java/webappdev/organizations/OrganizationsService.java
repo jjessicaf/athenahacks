@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.*;
 import org.springframework.stereotype.Service;
+import webappdev.login.User;
+import webappdev.login.UserRepository;
 
 
 @Service
@@ -11,9 +13,12 @@ public class OrganizationsService {
 
     private final OrganizationsRepository organizationsRepository;
 
+    private final UserRepository userRepository;
+
     @Autowired
-    public OrganizationsService(OrganizationsRepository organizationsRepository) {
+    public OrganizationsService(OrganizationsRepository organizationsRepository, UserRepository userRepository) {
         this.organizationsRepository = organizationsRepository;
+        this.userRepository = userRepository;
     }
 
     public List<Organizations> getOrganizations() {
@@ -38,6 +43,16 @@ public class OrganizationsService {
         if (organization == null) {
             return false;
         }
+        organizationsRepository.save(organization);
+        return true;
+    }
+
+    public boolean saveOrganization(Organizations organization, Long userId) {
+        if (organization == null) {
+            return false;
+        }
+        User user = userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("User not found"));
+        organization.setUser(user);
         organizationsRepository.save(organization);
         return true;
     }

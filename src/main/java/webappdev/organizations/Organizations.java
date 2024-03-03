@@ -37,8 +37,14 @@ public class Organizations {
         this.url = url;
         this.image = image;
         this.slug = slug;
+        System.out.println(userId + " HELLLOOOOOO");
         setUid(userId);
+        System.out.println(user.getId() + " YEEEE");
     }
+
+    public User getUser() { return this.user; }
+
+    public void setUser(User u) { this.user = u; }
 
     // Getters and Setters
 
@@ -79,6 +85,7 @@ public class Organizations {
     }
 
     public void setUid(Long uid) {
+        System.out.println(uid);
         if (user == null) {
             user = new User();
         }
