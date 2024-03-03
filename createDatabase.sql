@@ -14,7 +14,7 @@ CREATE TABLE users (
 
 CREATE TABLE preferences (
      id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-     causes VARCHAR(200) NOT NULL,
+     cause VARCHAR(200) NOT NULL,
      size INT NOT NULL,
      user_id INT NOT NULL,
      FOREIGN KEY (user_id) REFERENCES users(id)
