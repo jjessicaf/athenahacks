@@ -28,6 +28,8 @@ button {
     background-color:#f0f0f0;
     border-radius:30px;
     color: #4d6052;
+    transition-duration:0.2s;
+    border:none;
 }
 
 .signup-button:hover {
@@ -38,8 +40,10 @@ button {
     color: white;
     background: none;
     border: none;
+    transition-duration:0.2s;
 }
 
 .login-button:hover {
-    color:lightgray;
+    color:lightgray !important;
+    background-color:transparent !important;
 }
