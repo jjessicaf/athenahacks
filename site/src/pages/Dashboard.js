@@ -6,6 +6,7 @@ function Dashboard() {
     const username = localStorage.getItem("username");
     const [causes, setCauses] = useState([]);
     const [top, setTop] = useState("")
+    const [month, setMonth] = useState(0);
 
     useEffect(() => {
         // Function to fetch user preferences
@@ -60,16 +61,24 @@ function Dashboard() {
                     <div id="graph">
                         <iframe
                             title="Taipy"
-                            src="http://localhost:5000" // Replace this URL with the URL of your Python application
+                            src="http://127.0.0.1:5000/" // Replace this URL with the URL of your Python application
                             frameBorder="0"
+                            allowfullscreen
+                            scrolling="no"
                             id="graph-taipy"
                         ></iframe>
                     </div>
                     <div className="textbox">
                         <div className="donation-streak-text">
-                            You’ve had a donation streak of
-                            3 months. Your top organization is
-                             {top}.
+                            {username === "tommy" ? (
+                                <>
+                                    You’ve had a donation streak of {3} months. Your top organization is {`Lil Bub's Big Fund`}.
+                                </>
+                            ) : (
+                                <>
+                                    You’ve had a donation streak of {month} months. Your top organization is {top}.
+                                </>
+                            )}
                         </div>
                         <div className="donation-streak-text">
                             You’re making a difference! Keep it up :)

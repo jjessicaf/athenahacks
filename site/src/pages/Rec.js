@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import "../styles/rec.css"
+import Organization from "../components/Organization"
 
 function Rec() {
     const [heartSrc, setHeartSrc] = useState("/assets/Heart.png");
@@ -90,7 +91,7 @@ function Rec() {
             </div>
             <div className={"organization-results"}>
                 {organizations.map((org) => (
-                    <div className="individual-organization" style={{maxWidth: "15rem"}}>
+                    <div className="individual-organization" style={{maxWidth: "20rem"}}>
                     <Organization
                         name={org.name}
                         websiteUrl={org.websiteUrl}
