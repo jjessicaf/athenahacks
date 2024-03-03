@@ -14,7 +14,7 @@
     transition-duration:.2s;
 
 }
-button:hover{
+.login-container button:hover{
     background-color:whitesmoke;
 }
 .login-container{
@@ -35,7 +35,7 @@ button:hover{
 }
 
 
-input{
+.login-container input{
     font-family: 'Montserrat';
     border-radius:8px;
     border:none;
@@ -44,7 +44,7 @@ input{
     padding-left: 10px;
     background-color: #EEEEEE;
 }
-label{
+.login-container label{
     font-family: 'Montserrat';
     font-size: 15px;
     color: white;
