@@ -52,11 +52,13 @@ public class LoginController {
     //@CrossOrigin(origins = "http://localhost:8080")
     @PostMapping("/login")
     @ResponseBody
-    public ResponseEntity<Boolean> login(@RequestParam String username, @RequestParam String password) {
+    public ResponseEntity<Boolean> login(@RequestBody LoginRequest request) {
         try {
+            String username = request.getUsername();
+            String password = request.getPassword();
+
             // Fetch user from database based on username
             User user2 = loginService.findUserByUsername(username);
-
             if (user2 != null && user2.getPassword().equals(password)) {
                 // Username and password match
                 return ResponseEntity.ok(true);
@@ -72,15 +74,16 @@ public class LoginController {
 
     // Registers new user
     @PostMapping("/register")
-    public ResponseEntity<?> registerNewUser(@RequestBody LoginRequest request) {
+    public ResponseEntity<?> registerNewUser(@RequestBody SignupRequest request) {
         String username = request.getUsername();
         String password = request.getPassword();
+        String email = request.getEmail();
 
-        if (username == null || password == null) {
+        if (username == null || password == null || email == null) {
             return ResponseEntity.badRequest().body("Invalid request body");
         }
 
-        User newUser = new User(username, password); // Assuming User is your entity class
+        User newUser = new User(username, password, email); // Assuming User is your entity class
         boolean userAdded = loginService.addNewUser(newUser);
         LoginResponse response = new LoginResponse();
         if (userAdded) {
@@ -101,27 +104,27 @@ public class LoginController {
         return "Login Unsuccessful";
     }
 
-    @PostMapping("/login/test")
-    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request) {
-        LoginResponse response = new LoginResponse();
-
-        if (request.getUsername().equals("Tommy") && request.getPassword().equals("Trojan")) { // success case
-            response.setData("Login Successful");
-            return ResponseEntity.ok().body(response);
-        }
-        else if (request.getUsername().equals("Tommy") && request.getPassword().equals("Bruin")) {
-            response.setData("Login Unsuccessful");
-        }
-        else if (request.getUsername().isEmpty() && request.getPassword().isEmpty()) {
-            response.setData("Login Unsuccessful, username and password required");
-        }
-        else if (request.getUsername().equals("Tommy") && request.getPassword().isEmpty()) {
-            response.setData("Login Unsuccessful, password required");
-        }
-        else if (request.getUsername().isEmpty() && request.getPassword().equals("Trojan")) {
-            response.setData("Login Unsuccessful, username required");
-        }
-
-        return ResponseEntity.ok().body(response);
-    }
+//    @PostMapping("/login/test")
+//    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request) {
+//        LoginResponse response = new LoginResponse();
+//
+//        if (request.getUsername().equals("Tommy") && request.getPassword().equals("Trojan")) { // success case
+//            response.setData("Login Successful");
+//            return ResponseEntity.ok().body(response);
+//        }
+//        else if (request.getUsername().equals("Tommy") && request.getPassword().equals("Bruin")) {
+//            response.setData("Login Unsuccessful");
+//        }
+//        else if (request.getUsername().isEmpty() && request.getPassword().isEmpty()) {
+//            response.setData("Login Unsuccessful, username and password required");
+//        }
+//        else if (request.getUsername().equals("Tommy") && request.getPassword().isEmpty()) {
+//            response.setData("Login Unsuccessful, password required");
+//        }
+//        else if (request.getUsername().isEmpty() && request.getPassword().equals("Trojan")) {
+//            response.setData("Login Unsuccessful, username required");
+//        }
+//
+//        return ResponseEntity.ok().body(response);
+//    }
 }

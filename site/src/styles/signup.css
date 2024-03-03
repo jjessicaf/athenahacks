@@ -6,7 +6,7 @@ body {
 .signupContainer {
     text-align: center;
     font-family: "Montserrat", sans-serif;
-    font-weight: 500;
+    font-weight: 400;
     color: white;
     display: flex;
     flex-direction: column;
@@ -19,19 +19,22 @@ body {
 }
 .form-input {
     text-align: right;
-    font-size: 13px;
+    font-size: 14px;
 }
 .form-input div {
     margin: 8px;
 }
-input {
+.signupContainer input {
+    margin-left: 5px;
     border-radius: 8px;
     border: 1px solid #393939 ;
-    background-color: #D9D9D9;
+    padding-left: 10px;
 }
-input:not([type="radio"]) {
+
+.signupContainer input:not([type="radio"]) {
     width: 250px;
     height: 25px;
+
 }
 
 
@@ -46,12 +49,18 @@ input:not([type="radio"]) {
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
     font-size: 13px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.sign-button:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 .age-label {
-    margin-right: 173px;
+    margin-right: 175px;
 }
 .organization-label {
-    margin-right: 32px;
+    margin-right: 27px;
 }
 
