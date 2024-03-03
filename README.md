@@ -1,8 +1,11 @@
 # DOnate | athenahacks
 
 Jessica Fu fujessic@usc.edu
+
 Amy Zhang amyz@usc.edu
+
 Ellie Xing ellixin@usc.edu
+
 Yoonseo Choi yoonseoc@usc.edu
 
 ## Inspiration
