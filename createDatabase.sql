@@ -32,6 +32,7 @@ CREATE TABLE organizations (
 
 CREATE TABLE history (
      id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+     name VARCHAR(50) NOT NULL,
      date DATE,
      amount INT NOT NULL,
      user_id INT NOT NULL,

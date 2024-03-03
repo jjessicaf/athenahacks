@@ -16,11 +16,13 @@ public class PreferencesController {
     @Autowired
     public PreferencesController(PreferencesService preferencesService) {
         this.preferencesService = preferencesService;
+
     }
 
     @PostMapping("/preferences/post") //GET
     @ResponseBody
     public ResponseEntity<?> getUserPreferences(@RequestBody PreferencesRequest request) {
+
         List<Preferences> causes = preferencesService.getPreferencesByUserId(request.getUserId());
 
         PreferencesResponse response = new PreferencesResponse(causes);
@@ -31,6 +33,13 @@ public class PreferencesController {
     @ResponseBody
     public ResponseEntity<?> updateUserPreferences(@RequestBody PreferencesRequest request) {
         System.out.println(request.getUserId());
+        // delete current preferences
+        List<Preferences> prefs = preferencesService.getPreferencesByUserId(request.getUserId());
+        for (Preferences p : prefs) {
+            preferencesService.deletePreferencesById(p.getId());
+        }
+
+        // save new preferences
         List<Preferences> causes = preferencesService.saveMultiple(request.getCauses(), request.getUserId());
 
         System.out.println("success");
