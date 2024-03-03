@@ -1,0 +1,48 @@
+.rec-container {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h2 {
+    font-weight: 600;
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+.rec-list > div {
+    display: flex;
+    height: 40px;
+    align-items: center;
+}
+.rec-list > div > p {
+    white-space: nowrap;
+    margin: 10px;
+}
+
+.see-more {
+    font-size: 13px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.see-more-div {
+    /*margin-top: 10px;*/
+}
+
+.heart {
+    object-fit: contain;
+    height: 60%;
+    cursor: pointer;
+}
+.external-icon {
+    object-fit: contain;
+    width: 15px;
+    cursor: pointer;
+}
