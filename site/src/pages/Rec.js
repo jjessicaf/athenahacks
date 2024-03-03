@@ -89,6 +89,16 @@ function Rec() {
                 <p>We have saved these organizations to your profile.</p>
             </div>
             <div className={"organization-results"}>
+                {organizations.map((org) => (
+                    <div className="individual-organization" style={{maxWidth: "15rem"}}>
+                    <Organization
+                        name={org.name}
+                        websiteUrl={org.websiteUrl}
+                        coverImageUrl={org.coverImageUrl}
+                        slug={org.slug}
+                    />
+                    </div>
+                ))}
             </div>
             {/*<div className="rec-list">*/}
             {/*    <div className="example1">*/}
