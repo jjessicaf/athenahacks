@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import "../styles/rec.css"
+import Organization from "../components/Organization"
 
 function Rec() {
     const [heartSrc, setHeartSrc] = useState("/assets/Heart.png");
