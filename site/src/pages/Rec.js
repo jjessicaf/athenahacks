@@ -7,6 +7,8 @@ function Rec() {
     const [hearted, setHearted] = useState(false);
     // const [preferences, setPreferences] = useState([]);
     const [organizations, setOrganizations] = useState([]);
+
+    const uid = parseInt(localStorage.getItem("uid"), 10);
   
     // const toggleHeart = () => {
     //     if (!hearted) {
@@ -16,6 +18,27 @@ function Rec() {
     //     }
     //     setHearted(!hearted);
     // };
+
+    async function saveOrg(org) {
+        try {
+            const response = await fetch('http://localhost:8080/project/api/organization/save', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(org)
+            });
+
+            if (response.ok) {
+                const data = await response.text();
+                console.log(data); // Log success message
+            } else {
+                console.error('Failed to save organization');
+            }
+        } catch (error) {
+            console.error('Error saving organization:', error.message);
+        }
+    }
 
     useEffect(() => {
         // Fetch user preferences and convert them into a list of strings
@@ -46,6 +69,7 @@ function Rec() {
                 preferencesList.forEach(preference => {
                     getOrganizations(preference);
                 });
+
             })
             .catch(error => {
                 console.error("Error:", error);
@@ -73,6 +97,17 @@ function Rec() {
                     };
                     // Handle the organization data
                     setOrganizations(prevOrganizations => [...prevOrganizations, organizationData]);
+
+                    const orgSave = {
+                        name: organization.name,
+                        websiteUrl: organization.websiteUrl,
+                        coverImageUrl: organization.coverImageUrl,
+                        slug: organization.slug,
+                        userId: uid
+                    }
+
+                    saveOrg(orgSave);
+
                     console.log("Organization saved for preference: ", preference, ":", organizationData);
                 } else {
                     console.log("No organization found for preference", preference);
