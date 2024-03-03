@@ -20,6 +20,9 @@ public class Organizations {
     @Column(name = "image")//, columnDefinition = "LONGBLOB")
     private String image;
 
+    @Column(name = "slug")
+    private String slug;
+
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
@@ -29,10 +32,11 @@ public class Organizations {
     public Organizations() {
     }
 
-    public Organizations(String name, String url, String image, Long userId) {
+    public Organizations(String name, String url, String image, String slug, Long userId) {
         this.name = name;
         this.url = url;
         this.image = image;
+        this.slug = slug;
         setUid(userId);
     }
 
@@ -88,6 +92,7 @@ public class Organizations {
                 ", name=" + name +
                 ", url=" + url +
                 ", image=" + image +
+                ", slug=" + slug +
                 ", uid=" + getUid() +
                 '}';
     }
@@ -98,5 +103,13 @@ public class Organizations {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
     }
 }

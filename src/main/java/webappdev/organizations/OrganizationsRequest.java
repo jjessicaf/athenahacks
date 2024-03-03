@@ -5,6 +5,7 @@ public class OrganizationsRequest {
     private String name;
     private String url;
     private String image;
+    private String slug;
     private Long userId;
 
     public OrganizationsRequest() {}
@@ -13,10 +14,11 @@ public class OrganizationsRequest {
         this.userId = userId;
     }
 
-    public OrganizationsRequest(String name, String url, String image, Long userId) {
+    public OrganizationsRequest(String name, String url, String image, String slug, Long userId) {
         this.name = name;
         this.url = url;
         this.image = image;
+        this.slug = slug;
         this.userId = userId;
     }
 
@@ -58,5 +60,13 @@ public class OrganizationsRequest {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
     }
 }
