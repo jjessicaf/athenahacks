@@ -4,7 +4,7 @@ public class OrganizationsRequest {
 
     private String name;
     private String url;
-    private byte[] image;
+    private String image;
     private Long userId;
 
     public OrganizationsRequest() {}
@@ -13,7 +13,7 @@ public class OrganizationsRequest {
         this.userId = userId;
     }
 
-    public OrganizationsRequest(String name, String url, byte[] image, Long userId) {
+    public OrganizationsRequest(String name, String url, String image, Long userId) {
         this.name = name;
         this.url = url;
         this.image = image;
@@ -36,13 +36,13 @@ public class OrganizationsRequest {
         this.url = url;
     }
 
-    public byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
-    }
+//    public byte[] getImage() {
+//        return image;
+//    }
+//
+//    public void setImage(byte[] image) {
+//        this.image = image;
+//    }
 
     public Long getUserId() {
         return userId;
@@ -50,5 +50,13 @@ public class OrganizationsRequest {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
