@@ -8,6 +8,15 @@ function Dashboard() {
     const [causes, setCauses] = useState([]);
     const [top, setTop] = useState("")
     const [month, setMonth] = useState(0);
+    // if (username === "tommy") {
+    //     setMonth(3);
+    // }
+
+    useEffect( () => {
+        if (username === "tommy") {
+            setMonth(3);
+        }
+    }, []);
 
     const [orgs, setOrgs] = useState([]);
 
@@ -82,13 +91,30 @@ function Dashboard() {
                 <div className="title">Welcome back, {username}!</div>
 
                 <div className="main-container">
-                    <div className="graph">
-                        <iframe
-                            title="Taipy"
-                            src="http://127.0.0.1:5000/" // Replace this URL with the URL of your Python application
-                            id="graph-taipy"
-                        ></iframe>
-                    </div>
+                    {month === 0 && ( // Check if month is not equal to 0
+                        <div className="graph">
+                            <div className="textbox">
+                                you have no donation history
+
+                            </div>
+                        </div>
+                    )}
+                    {username === "tommy" && ( // Check if month is not equal to 0
+                        <div className="graph">
+                            <iframe
+                                title="Taipy"
+                                src="http://127.0.0.1:5000/" // Replace this URL with the URL of your Python application
+                                id="graph-taipy"
+                            ></iframe>
+                        </div>
+                    )}
+                    {/*<div className="graph">*/}
+                    {/*    <iframe*/}
+                    {/*        title="Taipy"*/}
+                    {/*        src="http://127.0.0.1:5000/" // Replace this URL with the URL of your Python application*/}
+                    {/*        id="graph-taipy"*/}
+                    {/*    ></iframe>*/}
+                    {/*</div>*/}
                     <div className="textbox">
                         <div className="donation-streak-text">
                             {username === "tommy" ? (
@@ -133,12 +159,12 @@ function Dashboard() {
                         </div>
 
                         <div>
-                            <button onClick={() => window.location.href = "/recommendation"} className="rec-orgs-button">recommend more organizations</button>
+                            <button onClick={() => window.location.href = "/recommendation"} className="rec-orgs-button">see my recommendations</button>
                         </div>
                     </div>
                     <div className="bottom-right-container">
                         <div className="causes-title-container">
-                            <div className="causes-label">Saved organizations:</div>
+                            <div className="causes-label">Top organizations:</div>
                             <a className="link" href="">
                                 see all
                             </a>
