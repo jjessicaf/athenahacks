@@ -37,7 +37,12 @@ function Dashboard() {
 
                 <div className="main-container">
                     <div id="graph">
-                        GRAPH GOES HERE
+                        <iframe
+                            title="Taipy"
+                            src="http://localhost:5000" // Replace this URL with the URL of your Python application
+                            frameBorder="0"
+                            id="graph-taipy"
+                        ></iframe>
                     </div>
                     <div className="textbox">
                         <div className="donation-streak-text">
