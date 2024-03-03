@@ -12,6 +12,29 @@ const categories = [
 
 function Preferences() {
     const [formData, setFormData] = useState({ causes: [] });
+    // formData = selectedCauses
+    const user = Number(localStorage.getItem("uid"));
+
+    const handleSubmitPreferences = () => {
+        fetch("/api/update-preferences", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                userId: user,
+                causes: formData
+            })
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Preferences updated:", data);
+                // Handle response as needed
+            })
+            .catch(error => {
+                console.error("Error updating preferences:", error);
+            });
+    };
 
     const handleUpdateData = (updatedData) => {
         setFormData(updatedData);
@@ -32,7 +55,7 @@ function Preferences() {
                         </div>
                     ))}
             </form>
-            <button id="submit-choices">go</button>
+            <button id="submit-choices" onClick={handleSubmitPreferences}>go</button>
         </div>
     );
     }

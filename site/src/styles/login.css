@@ -10,8 +10,9 @@
     border-radius: 10px;
     font-family: 'Montserrat', sans-serif;
     transition-duration:.2s;
-    padding: 1em;
+    padding: 0.5em;
     margin-top: 0.5em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .login-container button:hover{
