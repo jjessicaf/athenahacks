@@ -1,4 +1,7 @@
 import React, {useEffect, useState} from "react";
+import '../styles/login.css';
+import NavBar from "../components/NavBar";
+
 
 function Login() {
 
@@ -12,28 +15,34 @@ function Login() {
     }, []);
 
     return (
-        <div>
-            <div>Login Page</div>
-            <div>
-                <label>username </label>
-                <input
-                    id="username"
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
+        <body>
+        <NavBar id="navbar"></NavBar>
+
+        <div class="container">
+            <div class="title">Welcome Back!</div>
+            <div class="login-container">
+                <div class="input-container">
+                    <label>username </label>
+                    <input
+                        id="username"
+                        type="text"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                </div>
+                <div class="input-container">
+                    <label>password </label>
+                    <input
+                        id="password"
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </div>
             </div>
-            <div>
-                <label>password </label>
-                <input
-                    id="password"
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-            </div>
-            <button onClick={() => {
-                fetch("/login", {
+
+            <button class ="log-button" onClick={() => {
+                fetch('http://localhost:8080/project/api/register', {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -44,7 +53,10 @@ function Login() {
                         fails: fails
                     })
                 })
-                    .then((response) => response.json())
+                    .then((response) => {
+                        console.log('Response Headers:', response.headers);
+                        return response.json();
+                    })
                     .then((response) => {
                         if (response?.fails === 3) {
                             window.location.href = "/AccountBlockedPage";
@@ -55,10 +67,11 @@ function Login() {
                         }
                     });
             }}>
-                Login
+                log in
             </button>
             {fetchResponse ? <p>{fetchResponse}</p> : null}
         </div>
+        </body>
     )
 }
 
