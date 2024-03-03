@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import "../styles/rec.css"
 import Organization from "../components/Organization"
+import organization from "../components/Organization";
 
 function Rec() {
     const [heartSrc, setHeartSrc] = useState("/assets/Heart.png");
@@ -19,9 +20,9 @@ function Rec() {
     //     setHearted(!hearted);
     // };
 
-    async function saveOrg(org) {
+    function saveOrg(org) {
         try {
-            const response = await fetch('http://localhost:8080/project/api/organization/save', {
+            const response = fetch('http://localhost:8080/project/api/organization/save', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -30,7 +31,7 @@ function Rec() {
             });
 
             if (response.ok) {
-                const data = await response.text();
+                const data = response.text();
                 console.log(data); // Log success message
             } else {
                 console.error('Failed to save organization');
@@ -93,20 +94,23 @@ function Rec() {
                         name: organization.name,
                         websiteUrl: organization.websiteUrl,
                         coverImageUrl: organization.coverImageUrl,
-                        slug: organization.slug
-                    };
-                    // Handle the organization data
-                    setOrganizations(prevOrganizations => [...prevOrganizations, organizationData]);
-
-                    const orgSave = {
-                        name: organization.name,
-                        websiteUrl: organization.websiteUrl,
-                        coverImageUrl: organization.coverImageUrl,
                         slug: organization.slug,
                         userId: uid
-                    }
+                    };
 
-                    saveOrg(orgSave);
+                    console.log(organizationData);
+
+                    const org = {
+                        name: organization.name,
+                        url: organization.websiteUrl,
+                        image: organization.coverImageUrl,
+                        slug: organization.slug,
+                        userId: uid
+                    };
+
+                    saveOrg(org);
+                    // Handle the organization data
+                    setOrganizations(prevOrganizations => [...prevOrganizations, organizationData]);
 
                     console.log("Organization saved for preference: ", preference, ":", organizationData);
                 } else {
