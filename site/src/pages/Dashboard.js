@@ -5,7 +5,7 @@ function Dashboard() {
     const uid = parseInt(localStorage.getItem("uid"), 10);
     const username = localStorage.getItem("username");
     const [causes, setCauses] = useState([]);
-
+    const [top, setTop] = useState("")
 
     useEffect(() => {
         // Function to fetch user preferences
@@ -29,6 +29,27 @@ function Dashboard() {
         };
         fetchUserPreferences();
     },[]);
+    useEffect(() => {
+        const fetchUserTop = async () => {
+            try {
+                const response = await fetch("http://localhost:8080/project/api/date/top", {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({userId: uid})
+                });
+                if (!response.ok) {
+                    throw new Error('Failed to fetch user preferences. response not ok');
+                }
+                const responseData = await response.json();
+                setTop(responseData.data);
+            } catch (error) {
+                console.error('There was a problem with your fetch operation:', error);
+            }
+        };
+        fetchUserTop();
+    },[]);
     return (
         <body>
             <div className="main-main-container">
@@ -48,7 +69,7 @@ function Dashboard() {
                         <div className="donation-streak-text">
                             You’ve had a donation streak of
                             3 months. Your top organization is
-                            ________.
+                             {top}.
                         </div>
                         <div className="donation-streak-text">
                             You’re making a difference! Keep it up :)
