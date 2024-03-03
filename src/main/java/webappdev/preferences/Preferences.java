@@ -65,8 +65,8 @@ public class Preferences
     public String toString() {
         return "Preferences{" +
                 "id=" + id +
-                ", causes='" + getCause() + '\'' +
-                ", uid='" + getUid() + '\'' +
+                ", cause='" + getCause() +
+                ", uid='" + getUid() +
                 '}';
     }
 }
