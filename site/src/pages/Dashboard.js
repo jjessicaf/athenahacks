@@ -10,25 +10,24 @@ function Dashboard() {
         // Function to fetch user preferences
         const fetchUserPreferences = async () => {
             try {
-                const response = await fetch('/api/preferences/post', {
-                    method: 'POST',
+                const response = await fetch("http://localhost:8080/project/api/preferences/post", {
+                    method: "POST",
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({userId: uid })
+                    body: JSON.stringify({userId: uid})
                 });
                 if (!response.ok) {
                     throw new Error('Failed to fetch user preferences. response not ok');
                 }
                 const responseData = await response.json();
-                setCauses(responseData.getData());
+                setCauses(responseData.data);
             } catch (error) {
                 console.error('There was a problem with your fetch operation:', error);
             }
         };
-
         fetchUserPreferences();
-    });
+    },[]);
     return (
         <body>
             <div className="main-main-container">
@@ -63,7 +62,7 @@ function Dashboard() {
 
                             <div className="causes-list">
                                 {causes.map(cause => (
-                                    <p className="cause">{cause.name}</p>
+                                    <p className="cause">{cause}</p>
                                 ))}
                                 {/*<p className="cause">animals</p>*/}
                                 {/*<p className="cause">science</p>*/}
@@ -73,7 +72,7 @@ function Dashboard() {
                         </div>
 
                         <div>
-                            <button className="rec-orgs-button">recommend more organizations</button>
+                            <button onClick={() => window.location.href = "/recommendation"} className="rec-orgs-button">recommend more organizations</button>
                         </div>
                     </div>
                     <div className="bottom-right-container">
