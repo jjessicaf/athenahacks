@@ -34,6 +34,11 @@ public class OrganizationsController {
     @PostMapping("/organization/save") //POST
     @ResponseBody
     public ResponseEntity<String> saveOrganization(@RequestBody Organizations organization) {
+
+        if (organizationsService.organizationExistsByName(organization.getName())) {
+            return ResponseEntity.badRequest().body("Organization already exists");
+        }
+
         boolean saved = organizationsService.saveOrganization(organization);
         if (saved) {
             return ResponseEntity.ok("Organization saved successfully");
