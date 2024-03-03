@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import "../styles/dashboard.css"
+import Organization from "../components/Organization";
 
 function Dashboard() {
     const uid = parseInt(localStorage.getItem("uid"), 10);
@@ -7,6 +8,24 @@ function Dashboard() {
     const [causes, setCauses] = useState([]);
     const [top, setTop] = useState("")
     const [month, setMonth] = useState(0);
+
+    const [orgs, setOrgs] = useState([]);
+
+    useEffect(() => {
+        // Fetch organizations data from the server
+        fetch("http://localhost:8080/project/api/organizations/post", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                userId: uid // Replace yourUserId with the actual user ID
+            })
+        })
+            .then(response => response.json())
+            .then(data => setOrgs(data))
+            .catch(error => console.error("Error fetching organizations data:", error));
+    }, []); // Run only once when the component mounts
 
     useEffect(() => {
         // Function to fetch user preferences
@@ -51,6 +70,11 @@ function Dashboard() {
         };
         fetchUserTop();
     },[]);
+
+    const handleDonateClick = (slug) => {
+        window.open(`https://www.every.org/${slug}#/donate`, '_blank');
+    };
+
     return (
         <body>
             <div className="main-main-container">
@@ -81,7 +105,15 @@ function Dashboard() {
                             )}
                         </div>
                         <div className="donation-streak-text">
-                            You’re making a difference! Keep it up :)
+                            {username === "tommy" ? (
+                                <>
+                                    You’re making a difference! Keep it up :)
+                                </>
+                            ) : (
+                                <>
+                                    You're getting started on your journey! That's so exciting.
+                                </>
+                            )}
                         </div>
                     </div>
 
@@ -100,10 +132,6 @@ function Dashboard() {
                                 {causes.map(cause => (
                                     <p className="cause">{cause}</p>
                                 ))}
-                                {/*<p className="cause">animals</p>*/}
-                                {/*<p className="cause">science</p>*/}
-                                {/*<p className="cause">housing</p>*/}
-                                {/*<p className="cause">oceans</p>*/}
                             </div>
                         </div>
 
@@ -120,49 +148,19 @@ function Dashboard() {
                         </div>
                         <div className="saved-org-table">
                             <table>
-                                <tr>
-                                    <td> Save The Birds
-                                        <img className="ex-link" src="/assets/external_link.png"></img>
-                                    </td>
-                                    <td className="button-col">
-                                        <button className="donate-button">
-                                            donate
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td> Save The Cats
-                                        <img className="ex-link" src="/assets/external_link.png"></img>
-                                    </td>
-                                    <td className="button-col">
-                                        <button className="donate-button">
-                                            donate
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td> Save The Dogs
-                                        <a href="https://www.google.com" target="_blank">
-                                            <img className="ex-link" src="/assets/external_link.png"></img>
-                                        </a>
-                                    </td>
-                                    <td className="button-col">
-                                        <button className="donate-button">
-                                            donate
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td> Save The Crocodiles
-                                        <img className="ex-link" src="/assets/external_link.png"></img>
-                                    </td>
-                                    <td className="button-col">
-                                        <button className="donate-button">
-                                            donate
-                                        </button>
-                                    </td>
-                                </tr>
-
+                                {orgs.map(org => (
+                                    <tr key={org.id}>
+                                        <td>
+                                            {org.name}
+                                            <a href={org.url} target="_blank">
+                                                <img className="ex-link" src="/assets/external_link.png"></img>
+                                            </a>
+                                        </td>
+                                        <td className="button-col">
+                                            <button className="donate-button" onClick={() => handleDonateClick(org.slug)}>Donate</button>
+                                        </td>
+                                    </tr>
+                                ))}
                             </table>
                         </div>
 
