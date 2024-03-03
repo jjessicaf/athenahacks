@@ -1,11 +1,9 @@
 import React from "react";
-import NavBar from "../components/NavBar";
 import "./Home.css";
 
 function Home() {
     return (
         <div>
-            <NavBar></NavBar>
             <div className="demo_images">
                 <div className="column_1">
                     <div className="image_container3">
