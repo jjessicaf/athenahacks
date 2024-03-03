@@ -2,27 +2,40 @@ import React, {useState} from "react";
 import "../styles/signup.css"
 
 function SignUp() {
-    const [fetchResponse, handleFetchResponse] = useState();
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [fails, setFails] = useState(0);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Create an object with the form data
-        const formData = {
-            username: username,
-            email: email,
-            password: password
-        };
+        try {
+            const response = await fetch('http://localhost:8080/project/api/register', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    username: username,
+                    password: password,
+                    email: email
+                })
+            });
 
-        // Display form data in console
-        console.log("Form Data:", formData);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
 
-        // To simulate submission, you can show an alert
-        alert("Form submitted!"); // Uncomment this line to show an alert
+            const responseData = await response.json();
+            if (responseData?.data) {
+                localStorage.setItem("uid", response.id);
+                window.location.href ="/";
+            }
+
+            // Handle the response data as needed
+        } catch (error) {
+            console.error('There was a problem with your fetch operation:', error);
+        }
 
         // Reset form fields after submission (optional)
         setUsername('');

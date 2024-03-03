@@ -2,7 +2,7 @@ package webappdev.login;
 
 public class LoginResponse {
     private String data;
-    private int fails;
+    private Long id;
 
     public String getData() {
         return data;
@@ -12,7 +12,11 @@ public class LoginResponse {
         data = d;
     }
 
-    public int getFails() { return fails; }
+    public Long getId() {
+        return id;
+    }
 
-    public void setFails(int f) { fails = f; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 }
