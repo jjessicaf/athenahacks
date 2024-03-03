@@ -2,11 +2,11 @@ import React, {useState} from "react";
 import "../styles/signup.css"
 
 function SignUp() {
-    const [fetchResponse, handleFetchResponse] = useState();
+    // const [fetchResponse, handleFetchResponse] = useState();
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [fails, setFails] = useState(0);
+    // const [fails, setFails] = useState(0);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -33,7 +33,7 @@ function SignUp() {
     return (
         <div>
             <div className="signupContainer">
-                <div style={{ fontSize: '24px' }}>Welcome!</div>
+                <div style={{ fontSize: '30px' }}>Welcome!</div>
                 <form className="form-input" onSubmit={handleSubmit}>
                     <div>
                         <label>username </label>
@@ -93,7 +93,9 @@ function SignUp() {
                             required
                         />
                     </div>
-                    <button type="submit" className={"sign-button"}>sign up</button>
+                    <div className={"signbutton-container"}>
+                        <button type="submit" className={"sign-button"}>sign up</button>
+                    </div>
                 </form>
 
                 <div className={"errorMsg"}></div>
