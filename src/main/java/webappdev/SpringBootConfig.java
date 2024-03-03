@@ -40,17 +40,17 @@ public class SpringBootConfig {
             );
 
             Preferences p2 = new Preferences(
-                    "water",
+                    "education",
                     1L
             );
 
             Preferences p3 = new Preferences(
-                    "food",
+                    "poverty",
                     1L
             );
 
             Preferences p4 = new Preferences(
-                    "work",
+                    "research",
                     1L
             );
 
