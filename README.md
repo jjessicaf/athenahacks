@@ -4,7 +4,7 @@ Jessica Fu fujessic@usc.edu
 
 Amy Zhang amyz@usc.edu
 
-Ellie Xing ellixin@usc.edu
+Ellie Xing elliexin@usc.edu
 
 Yoonseo Choi yoonseoc@usc.edu
 
